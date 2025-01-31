@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height:100% ;
+            width:100% ;
+            background-image: url("https://png.pngtree.com/thumb_back/fw800/background/20231024/pngtree-captivating-aqua-blue-abstract-texture-with-bokeh-elements-image_13691784.png");
+            /* background-attachment: fixed; */
+            background-size: cover;
+        }
+        *{
+            font-family:Georgia, 'Times New Roman', Times, serif ;
+            letter-spacing: 4px;
+            /* font-size: 20px; */
+            /* color : rgb(95, 168, 0) ; */
+            text-align: center;
+            border-radius:10%;
+        }
+        #title{
+            margin-top: 50px;
+            padding-top: 25px;
+            color:navy ;
+        }
+        #total{
+            height:40% ;
+            width:33% ;
+            border:2px solid green ;
+            margin-left:30% ;
+            background-color: #6dfce4  ;
+            /* box-shadow: 20px 20px rgb(48, 196, 176); */
+            box-shadow: 20px 20px rgb(0, 60, 170);
+        }
+        #btn{
+            margin-top: 20px;
+            padding:5px;
+            
+        }
+        #res{
+            height:90px;
+            width:130px;
+            background-color: rgb(9, 0, 141);
+            color:rgb(239, 237, 255) ;
+            /* font-weight: bolder; */
+            font-family: fantasy;
+            border-radius:10px ;
+            border:2px solid rgb(0, 238, 255);
+            font-size: 20px;
+            margin-bottom: 20px;
+            box-shadow: 2px 2px rgb(59, 180, 180);
+        }
+        ::placeholder {
+            color: rgb(0, 15, 100);
+            opacity: 1; /* Firefox */
+            font-size: 14px;
+            padding-left: 12px;
+            font-weight: bolder;
+        }
+        #below{
+            background-color: rgb(28, 255, 168);
+            margin-bottom: 17px;
+            border-radius: 30px;
+            /* padding:20px; */
+            
+        }
+        #weight{
+            background-color: rgb(144, 255, 144);
+            /* border:none ; */
+            width:100px;
+            height:40px ;
+            font-size: 20px;
+        }
+        #height{
+            background-color: rgb(144, 255, 144);
+            font-size: 20px;
+            width:100px;
+            height:40px ;
+            font-weight: bolder;
+        }
+        #w{
+            color:rgb(0, 94, 0) ;
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+        }
+        #h{
+            font-family: Arial, Helvetica, sans-serif;
+            color:rgb(0, 94, 0) ;
+        }
+    </style>
+</head>
+<body>
+    <div id="total">
+        <h1 id="title">Check Your BMI</h1>
+        <h3 id="w">Put Your Weight in Here (KG)</h3>
+        <input id="weight" type="number" placeholder="Weight">
+        <h3 id="h">And Your Height in Here (CM)</h3>
+        <input id="height" type="text" placeholder="Height">
+        <div id="btn">
+            <button id="res">Calculate BMI</button>
+        </div>
+        <div id="below">
+            <h1 id="result"></h1>
+        </div>
+        
+    </div>
+</body>
+<script>
+    let btn = document.querySelector('button');
+    
+    btn.addEventListener("click",function(){
+        let w = document.querySelector("#weight").value ;
+        let h = document.querySelector("#height").value ;
+        let res = document.getElementById("result") ;
+        // let bmi = (Number(w) / (Number(h) * Number(h)))*10000 ;
+        let hi8 = document.querySelector("input") ;
+        hi8.style.fontWeight = "bolder"
+        let bmi = parseFloat((Number(w) / (Number(h) * Number(h)))*10000).toFixed(2);
+        if(bmi <= 18.4){
+            console.log("Underweight") ;
+            res.innerText = "BMI :  " + bmi + " \n Underweight" ;
+            res.style.color = "orange"
+        }else if(bmi >= 18.5 && bmi <= 24.9){
+            console.log("Normal Weight") ;
+            res.innerText = "BMI :  " + bmi + " \n Normal Weight" ;
+            res.style.color = "green"
+        }else if(bmi >= 25 && bmi <= 29.9){
+            console.log("Overweight") ;
+            res.innerText = "BMI :  " + bmi + " \n Fit" ;
+            res.style.color = "rgb(95, 168, 0)"
+        }else if(bmi >=30){
+            console.log("Obese") ;
+            res.innerText = "BMI :  " + bmi + " \n Obese" ;
+            res.style.color = "red"
+        }
+    })
+    
+</script>
+</html>
+
+
+<!-- Assignment :-
+
+Instructions
+BMI Calculator
+Create an application which calculates BMI (Body Mass Index)
+Your app should have 2 input boxes
+Take weight in kgs from user
+Take height in meters from user
+Based on entered height and weight calculate BMI of that person
+Here is the formula for manually calculating BMI  BMI = (weight) / (height * height)
+From the obtained BMI result, display whether the person is
+UnderWeight - bmi <= 18.4
+Normal Weight - bmi >= 18.5 && bmi <= 24.9
+Overweight - bmi >= 25 && bmi <= 29.9
+Obese - bmi >= 30
+Hint: use If conditions
+
+.. -->
